@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>聽力輔助APP</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#007bff">
+</head>
+<body>
+<br><br><br><br><br><br><br>
+    <div class="row">
+        <button class="btn-1" onclick="location.href='feature1/sound_to_word/dist/index.html'">語音轉文字</button>
+        <button class="btn-medium" onclick="location.href='feature2/pen-export-dPoBqOM/dist/index.html'">心情日記小助手🌟</button>
+        <button class="btn-medium" onclick="location.href='feature3/easy-speak.html'">Easy Speak</button>
+	</div>
+	<div class="row">
+        <button class="btn-medium" onclick="location.href='feature4/index.html'">小熊情緒安慰站🐻</button>
+        <button class="btn-large" onclick="location.href='feature5/index.html'">輔助通話</button>
+        <button class="btn-large" onclick="location.href='feature6/html.html'">造句學習</button>
+    </div>
+    <script src="script.js"></script>
+	<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
+</body>
+</html>
+
+
+
