@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
- html, body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -22,21 +22,23 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(var(--vh, 1vh) * 100); /* 使用 JS 計算後的 vh */
+
+  /* 用 JS 修正後的 vh */
+  height: calc(var(--vh, 1vh) * 100);
+
+  /* 背景圖 */
   background: url("homebackground.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  box-sizing: border-box;
+
+  /* ✅ 避免 iOS Safari / PWA 造成上下 padding */
+  padding: 0;
+  margin: 0;
+
   font-family: "Microsoft JhengHei", sans-serif;
   color: white;
   text-align: center;
+  overflow: hidden; /* ✅ 強制不讓背景下面露出白色 */
 }
-
-    /* 修正 Safari 100vh 問題 */
-    :root {
-      --vh: 1vh;
-    }
   </style>
 </head>
 <body>
@@ -45,14 +47,17 @@ body {
 
 <script>
 function setVh() {
+  // 計算真正可用高度 (包含工具列隱藏狀態)
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 window.addEventListener('resize', setVh);
+window.addEventListener('orientationchange', setVh);
 window.addEventListener('load', setVh);
 </script>
 </body>
 </html>
+
 
 
 
