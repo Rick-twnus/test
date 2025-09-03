@@ -10,29 +10,28 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
-    /* 設定 html/body 滿螢幕 */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
+ html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 
-    /* 背景圖設定 */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: url('homebackground.jpg') no-repeat center center;
-      background-size: cover;
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
-      box-sizing: border-box;
-      font-family: "Microsoft JhengHei", sans-serif;
-      color: white;
-      text-align: center;
-    }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(var(--vh, 1vh) * 100); /* 使用 JS 計算後的 vh */
+  background: url("homebackground.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  font-family: "Microsoft JhengHei", sans-serif;
+  color: white;
+  text-align: center;
+}
 
     /* 修正 Safari 100vh 問題 */
     :root {
@@ -44,17 +43,17 @@
   <h1>全螢幕背景 PWA 範例</h1>
   <p>上方不會有藍色留白，背景圖完整呈現。</p>
 
-  <script>
-    // 修正 iOS Safari 100vh 問題
-    function setVh() {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    window.addEventListener('resize', setVh);
-    window.addEventListener('load', setVh);
-  </script>
+<script>
+function setVh() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+window.addEventListener('resize', setVh);
+window.addEventListener('load', setVh);
+</script>
 </body>
 </html>
+
 
 
 
